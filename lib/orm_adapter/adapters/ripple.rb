@@ -55,7 +55,7 @@ module Ripple
             if (v.values) {
               original = v;
               var v = Riak.mapValuesJson(v)[0];
-              return (#{conditions.map { |k,v| "v.#{k} === '#{v}'" }.join(' && ')}) ? [original.key] : [];
+              return (#{conditions.map { |k,v| "v.#{k} === '#{v}'" }.join(' && ')}) ? [decodeURIComponent(original.key)] : [];
             } else return [];
           }
         "
